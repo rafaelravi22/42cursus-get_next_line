@@ -6,7 +6,7 @@
 /*   By: rafamart <rafamart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:32:23 by rafamart          #+#    #+#             */
-/*   Updated: 2023/05/26 18:27:30 by rafamart         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:43:31 by rafamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
 	{
-		if (fd >= 0 && fd <= FOPEN_MAX)
+		if(fd >= 0 && fd < FOPEN_MAX)
 		{
 			i = 0;
-			while (buffer[i])
+			while (buffer[fd][i])
 			{
 				buffer[fd][i] = 0;
 				i++;
@@ -40,5 +40,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-
-// fopenmax?? fd??
